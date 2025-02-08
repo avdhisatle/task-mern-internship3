@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+    background-color: aqua;
+}
+.bet{
+    display: flex;
+    padding-left:300px;
+    
+}
+.rat{
+    display: flex;
+    padding-left:300px;
+    margin-top:190px;
+    margin-left:30px;  
+}
+.rat:hover{
+ box-shadow:5px 5px 5px 5px;
+}
