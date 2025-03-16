@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quiz</title>
+</head>
+<!-- <body>
+
+    <textarea name="" id="question" ></textarea>
+    <br>
+    <input type="text" name="name" id="option1">
+    <input type="text" name="name" id="option2">
+    <input type="text" name="name" id="option3">
+    <input type="text" name="name" id="option4">
+    <br>
+    <textarea name="" id="answerArea"></textarea>
+    <button onclick="saveData()">save</button>
+    <br>
+    <button onclick="quizObject()">
+        SavedquizData
+     </button>
+     <div id="quiz-question">
+
+     </div>
+
+   <script>
+      var listOfQuestions = []
+      function saveData(){
+        var question= document.getElementById("question").value
+        var a = document.getElementById("option1").value
+        var b = document.getElementById("option2").value
+        var c = document.getElementById("option3").value
+        var d = document.getElementById("option4").value
+            var answer = document.getElementById("answerArea").value
+            var quizObject= {
+            "question": question,
+                "a": a,
+                "b": b,
+                "c": c,
+                "d": d,
+                "answer": answer
+            }
+            listOfQuestions.push(quizObject)
+            localStorage.setItem("question", JSON.stringify(listOfQuestions) )
+          }
+           function quizObject (){
+            listOfQuestions = JSON.parse(localStorage.getItem("question"))
+            document.getElementById("quizobject") 
+
+           }
+
+          function deleteQuestions(index){
+        listOfQuestions.splice(index, 1)
+        localStorage.setItem("question", JSON.stringify(listOfQuestions))
+        quizObject()
+    }
+       </script>   
+</body> -->
+
+<body>
+    <input type="text" id="q">
+    <input type="text" id="a">
+    <input type="text" id="b">
+    <input type="text" id="c">
+    <input type="text" id="d">
+    <input type="text" id="correct">
+    <button onclick="setdata()">submit</button>
+
+    <script>
+         var array = []
+        function setdata() {
+            var question = document.getElementById('q').value
+            var option1 = document.getElementById('a').value
+            var option2 = document.getElementById('b').value
+            var option3 = document.getElementById('c').value
+            var option4 = document.getElementById('d').value
+            var correct = document.getElementById('correct').value
+
+            var obj = {
+                qus: question,
+                op1: option1
+            }
+            array.push(obj)
+            console.log(array)
+            localStorage.setItem("question",JSON.stringify(array))
+          
+            
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

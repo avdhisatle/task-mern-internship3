@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>cal</title>
+    
+   
+</head>
+<body>
+    <section>
+    <label for="">input1</label> <input type="text" id="value1" placeholder="enter number"><br>
+    <label for="">input2</label> <input type="text" id="value2" placeholder="enter number">
+    <div>
+            <button onclick="add()">+</button>
+            <button onclick="sub()">-</button>
+            <button onclick="multile()">*</button>
+            <button onclick="divide()">/</button>
+    </div>
+    </section>
+    <script>
+       function add(){
+       var a = document.getElementById("value1").value
+       var b = document.getElementById("value2").value
+       var sum = parseInt(a)+parseInt(b)
+       console.log(sum)
+       }
+       function sub(){
+       var a = document.getElementById("value1").value
+       var b = document.getElementById("value2").value
+       var sub = parseInt(a)-parseInt(b)
+       console.log(sub)
+       }
+       function multile(){
+       var a = document.getElementById("value1").value
+       var b = document.getElementById("value2").value
+       var mul = parseInt(a)*parseInt(b)
+       console.log(mul)
+       }
+       function divide(){
+       var a = document.getElementById("value1").value
+       var b = document.getElementById("value2").value
+       var divide = parseInt(a)/parseInt(b)
+       console.log(divide)
+       }
+
+    </script>
+    
+</body>
+</html>

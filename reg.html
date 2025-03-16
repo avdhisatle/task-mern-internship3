@@ -1,0 +1,121 @@
+<html lang="en" dir="ltr">
+<head>
+  <title> Responsive Registration Form </title>
+  <link rel="stylesheet" href="reg.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">Registration</div>
+    <div class="content">
+      <!-- Registration form -->
+      <form action="#">
+        <div class="user-details">
+          <!-- Input for Full Name -->
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" required>
+          </div>
+          <!-- Input for Username -->
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" required>
+          </div>
+          <!-- Input for Email -->
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" required>
+          </div>
+          <!-- Input for Phone Number -->
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" required>
+          </div>
+          <!-- Input for Password -->
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" placeholder="Enter your password" required>
+          </div>
+          <!-- Input for Confirm Password -->
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" placeholder="Confirm your password" required>
+          </div>
+        </div>
+        <div class="gender-details">
+          <!-- Radio buttons for gender selection -->
+          <input type="radio" name="gender" id="dot-1">
+          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" name="gender" id="dot-3">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <!-- Label for Male -->
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <!-- Label for Female -->
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            <!-- Label for Prefer not to say -->
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get form values
+        const fullName = form.querySelector('input[placeholder="Enter your name"]').value;
+        const username = form.querySelector('input[placeholder="Enter your username"]').value;
+        const email = form.querySelector('input[placeholder="Enter your email"]').value;
+        const phoneNumber = form.querySelector('input[placeholder="Enter your number"]').value;
+        const password = form.querySelector('input[placeholder="Enter your password"]').value;
+        const confirmPassword = form.querySelector('input[placeholder="Confirm your password"]').value;
+        const gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').nextElementSibling.textContent : null;
+
+        // Validation (optional, but recommended)
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        // Create an object to store user data
+        const userData = {
+            fullName: fullName,
+            username: username,
+            email: email,
+            phoneNumber: phoneNumber,
+            password: password, // Consider hashing passwords in a real application
+            gender: gender
+        };
+
+        // Store user data in localStorage
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        // Optionally, provide feedback to the user
+        alert("Registration successful! Data saved to local storage.");
+
+        // Optionally, redirect to another page or clear the form
+        // form.reset(); // clear the form.
+        // window.location.href = "success.html"; //example of redirecting to a success page.
+    });
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show data</title>
+</head>
+<body>
+    <div id="show">
+
+    </div>
+    <script>
+      var data =  JSON.parse(localStorage.getItem("question"))
+      console.log(data)
+        document.getElementById('show').innerHTML = data.map((a)=>`<h1>Q${a.qus}</h1>
+        `)
+    </script>
+</body>
+</html>

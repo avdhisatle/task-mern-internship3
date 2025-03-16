@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <!---Custom CSS File--->
+  <link rel="stylesheet" href="log.css">
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Login</header>
+      <form action="#">
+        <input type="text" placeholder="Enter your email">
+        <input type="password" placeholder="Enter your password">
+        <a href="#">Forgot password?</a>
+        <input type="button" class="button" value="Login">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+         <label for="check">Signup</label>
+        </span>
+      </div>
+    </div>
+    <div class="registration form">
+      <header>Signup</header>
+      <form action="#">
+        <input type="text" placeholder="Enter your email">
+        <input type="password" placeholder="Create a password">
+        <input type="password" placeholder="Confirm your password">
+        <input type="button" class="button" value="Signup">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+         <label for="check">Login</label>
+        </span>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.querySelector('.login form');
+    const signupForm = document.querySelector('.registration form');
+    const check = document.getElementById('check');
+
+    // Login Form Submission
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const email = loginForm.querySelector('input[type="text"]').value;
+        const password = loginForm.querySelector('input[type="password"]').value;
+
+        // Retrieve user data from localStorage
+        const userData = JSON.parse(localStorage.getItem('userData'));
+
+        if (userData && userData.email === email && userData.password === password) {
+            alert('Login successful!');
+            // Redirect or perform other actions upon successful login
+            // window.location.href = "dashboard.html"; // Example redirect
+        } else {
+            alert('Invalid email or password.');
+        }
+    });
+
+    // Signup Form Submission
+    signupForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const email = signupForm.querySelector('input[type="text"]').value;
+        const password = signupForm.querySelector('input[placeholder="Create a password"]').value;
+        const confirmPassword = signupForm.querySelector('input[placeholder="Confirm your password"]').value;
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        // Check if the email is already registered
+        const existingUserData = JSON.parse(localStorage.getItem('userData'));
+        if (existingUserData && existingUserData.email === email) {
+            alert('Email already registered. Please login.');
+            check.checked = false; //switch to login automatically
+            return;
+        }
+
+        // Store user data in localStorage
+        const userData = {
+            email: email,
+            password: password // In a real app, hash the password!
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        alert('Signup successful! Please login.');
+        check.checked = false; //switch to login automatically
+    });
+
+    // Handle button clicks (using button type for submit)
+    loginForm.querySelector('input[type="button"]').addEventListener('click', function() {
+      loginForm.dispatchEvent(new Event('submit'));
+    });
+    signupForm.querySelector('input[type="button"]').addEventListener('click', function() {
+      signupForm.dispatchEvent(new Event('submit'));
+    });
+});
+  </script>
+</body>
+</html>
